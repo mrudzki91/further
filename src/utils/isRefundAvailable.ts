@@ -1,4 +1,5 @@
 import { addHours } from 'date-fns';
+import { RequestSource } from '../types/refundRequest';
 
 const refundTimeLimitsInHours = {
     phone: {
@@ -12,7 +13,7 @@ const refundTimeLimitsInHours = {
 };
 
 const isRefundAvailable = (
-    requestSource: 'phone' | 'web app',
+    requestSource: RequestSource,
     investmentDate: Date,
     requestDate: Date,
     useNewTOS: boolean,

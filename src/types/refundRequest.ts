@@ -1,8 +1,12 @@
+export type Location = 'US' | 'Europe';
+
+export type RequestSource = 'phone' | 'web app';
+
 export type RefundRequest = {
     name: string;
-    location: 'US' | 'Europe';
+    location: Location;
     signupDate: string;
-    requestSource: 'phone' | 'web app';
+    requestSource: RequestSource;
     investmentDate: string;
     investmentTime: string;
     refundRequestDate: string;
