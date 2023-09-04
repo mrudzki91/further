@@ -28,4 +28,10 @@ describe('getDateFromString', () => {
             new Date(2023, 0, 14, 0, 0),
         );
     });
+
+    test('handles invalid dates', () => {
+        expect(getDateFromString('Europe', 'just some text', '09:00').toJSON()).toBeNull();
+        expect(getDateFromString('Europe', '', '16:05').toJSON()).toBeNull();
+        expect(getDateFromString('Europe', '142/41/2023', '200:004').toJSON()).toBeNull();
+    });
 });
