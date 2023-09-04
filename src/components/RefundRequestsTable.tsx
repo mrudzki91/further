@@ -1,7 +1,5 @@
 import { RefundRequest } from '../types/refundRequest';
-import getDateFromString from '../utils/getDateFromString';
-import isRefundAvailable from '../utils/isRefundAvailable';
-import shouldApplyNewTOS from '../utils/shouldApplyNewTOS';
+import getRefundRequestStatus from '../utils/getRefundRequestStatus';
 
 type Props = {
     refundRequests: RefundRequest[];
@@ -24,43 +22,19 @@ const RefundRequestsTable: React.FC<Props> = ({ refundRequests }) => {
                 </tr>
             </thead>
             <tbody>
-                {refundRequests.map(
-                    ({
-                        name,
-                        investmentDate,
-                        investmentTime,
-                        location,
-                        refundRequestDate,
-                        refundRequestTime,
-                        requestSource,
-                        signupDate,
-                    }) => (
-                        <tr key={name}>
-                            <td>{name}</td>
-                            <td>{location}</td>
-                            <td>{signupDate}</td>
-                            <td>{requestSource}</td>
-                            <td>{investmentDate}</td>
-                            <td>{investmentTime}</td>
-                            <td>{refundRequestDate}</td>
-                            <td>{refundRequestTime}</td>
-                            <td>
-                                {isRefundAvailable(
-                                    requestSource,
-                                    getDateFromString(location, investmentDate, investmentTime),
-                                    getDateFromString(
-                                        location,
-                                        refundRequestDate,
-                                        refundRequestTime,
-                                    ),
-                                    shouldApplyNewTOS(getDateFromString(location, signupDate)),
-                                )
-                                    ? 'Approved'
-                                    : 'Denied'}
-                            </td>
-                        </tr>
-                    ),
-                )}
+                {refundRequests.map((refundRequest) => (
+                    <tr key={refundRequest.name}>
+                        <td>{refundRequest.name}</td>
+                        <td>{refundRequest.location}</td>
+                        <td>{refundRequest.signupDate}</td>
+                        <td>{refundRequest.requestSource}</td>
+                        <td>{refundRequest.investmentDate}</td>
+                        <td>{refundRequest.investmentTime}</td>
+                        <td>{refundRequest.refundRequestDate}</td>
+                        <td>{refundRequest.refundRequestTime}</td>
+                        <td>{getRefundRequestStatus(refundRequest)}</td>
+                    </tr>
+                ))}
             </tbody>
         </table>
     ) : (
