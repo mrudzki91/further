@@ -18,4 +18,4 @@ The table below gives you a list of customers' reversal requests.
 | Sophia Wilson    | US                | 2/1/2020     | phone          | 2/1/2021        | 22:00           | 2/2/2021            | 5:00                |
 | Liam Martinez    | Europe            | 1/1/2020     | web app        | 1/1/2021        | 11:00           | 11/1/2021           | 12:00               |
 
-Write a small front end application that will take in the data in the table above and display whether each refund request should be approved or denied.
+Write a small front end application that will take in the data in the table above and display whether each refund request should be approved or denied. The emphasis of the application should be on solving the problem, and much less on the architecture, design, etc.
