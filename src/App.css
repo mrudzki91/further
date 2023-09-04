@@ -1,3 +1,23 @@
 .App {
   text-align: center;
 }
+
+main {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+main table {
+  text-align: left;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+main table th,
+main table td {
+  padding: 6px 4px;
+  border: 1px lightgray solid;
+}
+
+main table tbody tr:nth-child(2n+1) {
+  background-color: whitesmoke;
+}
